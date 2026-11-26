@@ -3,538 +3,412 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 내가 소개하는 서울 — 낮부터 밤까지, 여러분의 프레임이 되어 드립니다 (16:9 V.0.4.00)</title>
+<title>V.0.5.00 『어서 와, 내 옆자리 창가 비워둘게』 — 4대 실제 교통수단 좌석 고증 &amp; 3막 10컷 보드</title>
 <style>
-  :root {
-    --bg: #070b14;
-    --panel: #111827;
-    --border: #2e3c56;
-    --sky: #38bdf8;
-    --gold: #fbbf24;
-    --mint: #34d399;
-    --text: #f8fafc;
-    --sub: #cbd5e1;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Pretendard', 'Malgun Gothic', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    margin: 0;
-    padding: 20px 14px 80px;
-    line-height: 1.6;
-  }
-  .wrap { max-width: 1400px; margin: 0 auto; }
-  header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 55%, #311042 100%);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 26px 28px;
-    margin-bottom: 18px;
-  }
-  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
-  .b {
-    padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 700;
-    background: rgba(56,189,248,0.16); color: var(--sky); border: 1px solid rgba(56,189,248,0.35);
-  }
-  .b.g { background: rgba(52,211,153,0.16); color: var(--mint); border-color: rgba(52,211,153,0.35); }
-  .b.y { background: rgba(251,191,36,0.16); color: var(--gold); border-color: rgba(251,191,36,0.35); }
-  h1 { font-size: clamp(20px, 3vw, 26px); margin: 6px 0 10px; letter-spacing: -0.02em; }
-  .quote {
-    background: rgba(255,255,255,0.06); border-left: 4px solid var(--gold);
-    padding: 12px 16px; border-radius: 8px; font-size: 14.5px; color: #fde68a; margin-top: 10px;
-  }
-  .quick-nav {
-    position: sticky; top: 8px; z-index: 30;
-    display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
-    background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(10px);
-    border: 1px solid var(--border); border-radius: 12px; padding: 8px 14px; margin-bottom: 20px;
-  }
-  .quick-nav span { font-size: 12.5px; font-weight: 700; color: var(--sub); margin-right: 4px; }
-  .npill {
-    text-decoration: none; color: var(--text); font-size: 12px; font-weight: 700;
-    padding: 4px 10px; border-radius: 999px; background: #1e293b; border: 1px solid #334155;
-  }
-  .npill:hover { background: var(--sky); color: #070b14; }
-  .media-bar {
-    background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
-    padding: 22px 24px; margin-bottom: 24px;
-  }
-  .video-shell {
-    width: 100%; max-width: 1020px; margin: 10px auto 16px;
-  }
-  video {
-    width: 100%; aspect-ratio: 16 / 9; background: #000;
-    border-radius: 12px; border: 1px solid #475569; display: block;
-  }
-  .audio-bar {
-    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
-    padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08);
-  }
-  .card {
-    background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
-    padding: 20px; margin-bottom: 22px; scroll-margin-top: 66px;
-  }
-  .card-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
-  .num { background: var(--sky); color: #070b14; font-weight: 900; padding: 4px 10px; border-radius: 6px; font-size: 13px; }
-  .ttl { font-weight: 800; font-size: 16px; color: var(--gold); }
-  .emo { font-size: 12px; padding: 3px 10px; border-radius: 999px; background: rgba(244,114,182,0.16); color: #f472b6; font-weight: 700; }
-  .role { font-size: 12px; padding: 3px 10px; border-radius: 999px; background: rgba(52,211,153,0.16); color: var(--mint); font-weight: 700; }
-  .view-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-  .vbtn {
-    background: #1e293b; color: var(--sub); border: 1px solid #334155; border-radius: 8px;
-    padding: 5px 12px; font-size: 12.5px; font-weight: 700; cursor: pointer;
-  }
-  .vbtn.active { background: var(--sky); color: #070b14; border-color: var(--sky); }
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 14px; }
-  .grid.single-b { grid-template-columns: 1fr; }
-  .grid.single-b .box-a { display: none; }
-  .grid.single-a { grid-template-columns: 1fr; }
-  .grid.single-a .box-b { display: none; }
-  @media (max-width: 880px) { .grid { grid-template-columns: 1fr; } }
-  .fbox { background: #070b14; border: 1px solid #2d3d5b; border-radius: 12px; padding: 12px; text-align: center; }
-  .fbox.hi { border: 2px solid var(--gold); }
-  .flbl { font-size: 13px; font-weight: 800; color: var(--sky); margin-bottom: 8px; }
-  .flbl.gold { color: var(--gold); }
-  .fbox img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; display: block; }
-  .fdesc { font-size: 12.5px; color: var(--sub); margin-top: 8px; }
-  .meta-box { background: rgba(255,255,255,0.04); border-left: 4px solid var(--sky); padding: 12px 15px; border-radius: 8px; font-size: 14px; }
-  .vo-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
-  .cut-audio { height: 34px; max-width: 260px; }
-  .motion-line { margin-top: 8px; color: #fcd34d; font-size: 13.5px; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Pretendard','Malgun Gothic',sans-serif; background:#070b14; color:#f8fafc; margin:0; padding:20px 14px 80px; line-height:1.6; }
+  .wrap { max-width:1400px; margin:0 auto; }
+  header { background:linear-gradient(135deg,#0f172a,#172554 55%,#311042); border:1px solid #2e3c56; border-radius:18px; padding:26px 28px; margin-bottom:18px; }
+  .badges { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+  .b { padding:4px 12px; border-radius:999px; font-size:12px; font-weight:700; background:rgba(56,189,248,0.16); color:#38bdf8; border:1px solid rgba(56,189,248,0.35); }
+  .b.g { background:rgba(52,211,153,0.16); color:#34d399; border-color:rgba(52,211,153,0.35); }
+  .b.y { background:rgba(251,191,36,0.16); color:#fbbf24; border-color:rgba(251,191,36,0.35); }
+  h1 { font-size:clamp(20px,3vw,26px); margin:6px 0 10px; }
+  .quote { background:rgba(255,255,255,0.06); border-left:4px solid #fbbf24; padding:12px 16px; border-radius:8px; font-size:14.5px; color:#fde68a; margin-top:10px; }
+  .quick-nav { position:sticky; top:8px; z-index:20; display:flex; flex-wrap:wrap; gap:6px; align-items:center; background:rgba(15,23,42,0.92); backdrop-filter:blur(10px); border:1px solid #2e3c56; border-radius:12px; padding:8px 14px; margin-bottom:20px; }
+  .npill { text-decoration:none; color:#f8fafc; font-size:12px; font-weight:700; padding:4px 10px; border-radius:999px; background:#1e293b; border:1px solid #334155; }
+  .npill:hover { background:#38bdf8; color:#070b14; }
+  .media-bar { background:#111827; border:1px solid #2e3c56; border-radius:16px; padding:22px 24px; margin-bottom:24px; }
+  video { width:100%; max-width:1020px; aspect-ratio:16/9; background:#000; border-radius:12px; border:1px solid #475569; display:block; margin:10px auto 16px; }
+  .card { background:#111827; border:1px solid #2e3c56; border-radius:16px; padding:20px; margin-bottom:22px; scroll-margin-top:66px; }
+  .card-head { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:10px; }
+  .num { background:#38bdf8; color:#070b14; font-weight:900; padding:4px 10px; border-radius:6px; font-size:13px; }
+  .act { font-size:12px; padding:3px 10px; border-radius:999px; background:rgba(52,211,153,0.16); color:#34d399; font-weight:700; }
+  .ttl { font-weight:800; font-size:16px; color:#fbbf24; }
+  .emo { font-size:12px; padding:3px 10px; border-radius:999px; background:rgba(244,114,182,0.16); color:#f472b6; font-weight:700; }
+  .anchor-bar { background:rgba(56,189,248,0.08); border:1px dashed rgba(56,189,248,0.35); border-radius:8px; padding:7px 12px; font-size:13px; color:#bae6fd; margin-bottom:12px; }
+  .view-tabs { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; }
+  .vbtn { background:#1e293b; color:#cbd5e1; border:1px solid #334155; border-radius:8px; padding:5px 12px; font-size:12.5px; font-weight:700; cursor:pointer; }
+  .vbtn.active { background:#38bdf8; color:#070b14; border-color:#38bdf8; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:14px; }
+  .grid.single-b { grid-template-columns:1fr; }
+  .grid.single-b .box-a { display:none; }
+  .grid.single-a { grid-template-columns:1fr; }
+  .grid.single-a .box-b { display:none; }
+  @media(max-width:880px){ .grid { grid-template-columns:1fr; } }
+  .fbox { background:#070b14; border:1px solid #2d3d5b; border-radius:12px; padding:12px; text-align:center; }
+  .fbox.hi { border:2px solid #fbbf24; }
+  .flbl { font-size:13px; font-weight:800; color:#38bdf8; margin-bottom:8px; }
+  .flbl.gold { color:#fbbf24; }
+  .fbox img { width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:8px; display:block; }
+  .fdesc { font-size:12.5px; color:#cbd5e1; margin-top:8px; }
+  .meta-box { background:rgba(255,255,255,0.04); border-left:4px solid #38bdf8; padding:12px 15px; border-radius:8px; font-size:14px; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header id="top">
     <div class="badges">
-      <span class="b g">V.0.4.00 · 1920×1080 (16:9 가로형 시네마 규격)</span>
-      <span class="b">2026 내가 소개하는 서울 숏폼 공모전</span>
-      <span class="b y">주연·성우: 이지원 1인 단독 (57.34초)</span>
+      <span class="b g">V.0.5.00 · CompeCanvas 3막 10컷 마스터 (51.36초)</span>
+      <span class="b">1920×1080 (16:9 가로형)</span>
+      <span class="b y">실사 36매 고증: 지하철(롱시트) · KTX(하얀헤드커버) · 시내버스(미닫이창) · 한강버스(스카이라이트) + 3막 오픈프레임</span>
     </div>
-    <h1>『낮부터 밤까지, 여러분의 프레임이 되어 드립니다』 — 16:9 가로형 구도 &amp; 프리뷰 스토리보드</h1>
-    <div class="quote">“많은 사람들이 이용하는 교통시설에서 우리는 창을 통해 세상을 바라봐요. 같지만 다른 풍경이 기다리고 있는 오늘, 낮부터 밤까지, 여러분의 프레임이 되어 드립니다.”</div>
+    <h1>『어서 와, 내 옆자리 창가 비워둘게』 — 실제 교통수단 좌석 고증 &amp; 오픈 프레임 스토리보드</h1>
+    <div class="quote">“작은 휴대폰 화면에서 눈을 떼면 열리는 서울의 차창들, 그리고 밤에는 창문 밖으로 직접 걸어 나와도 다정하게 지켜주는 도시 — 이번 주말, 내 옆자리 비워둘게.”</div>
   </header>
-
   <nav class="quick-nav">
-    <span>컷 바로가기:</span>
+    <span style="font-size:12.5px;color:#cbd5e1;font-weight:700;">컷 바로가기:</span>
     <a href="#top" class="npill">🎬 전체 프리뷰</a>
     <a href="#cut01" class="npill">#01</a><a href="#cut02" class="npill">#02</a><a href="#cut03" class="npill">#03</a><a href="#cut04" class="npill">#04</a><a href="#cut05" class="npill">#05</a><a href="#cut06" class="npill">#06</a><a href="#cut07" class="npill">#07</a><a href="#cut08" class="npill">#08</a><a href="#cut09" class="npill">#09</a><a href="#cut10" class="npill">#10</a>
   </nav>
-
   <section class="media-bar">
-    <h3 style="color:#34d399;margin:0 0 6px;font-size:17px;">🎬 16:9 가로형 시네마 프리뷰 영상 (1920×1080 · 57.34초 · 하단 무잘림 영화 자막)</h3>
-    <div class="video-shell">
-      <video controls playsinline preload="metadata" poster="assets/cut03_b.jpg" src="assets/preview_16x9_1080p.mp4"></video>
-    </div>
-    <div class="audio-bar">
-      <div style="font-size:14px;color:#38bdf8;font-weight:700;">🎧 이지원 단독 감성 내레이션 통합 오디오 (55.66초 · 4감정 연동)</div>
-      <audio controls preload="metadata" src="assets/master_tts.mp3" style="width:100%;max-width:480px;height:38px;"></audio>
+    <h3 style="color:#34d399;margin:0 0 6px;font-size:17px;">🎬 V.0.5.00 가로형 시네마 프리뷰 (1920×1080 · 51.36초 · 4대 실제 교통수단 좌석 &amp; 3막 오픈 프레임)</h3>
+    <video controls playsinline preload="metadata" poster="assets_v5/cut06_b.jpg" src="assets_v5/preview_v0500_1080p.mp4"></video>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.08);">
+      <div style="font-size:14px;color:#38bdf8;font-weight:700;">🎧 이지원 편지형 내레이션 통합 오디오 (CompeCanvas V.0.8.13 실합성)</div>
+      <audio controls preload="metadata" src="assets_v5/master_tts.mp3" style="width:100%;max-width:480px;height:38px;"></audio>
     </div>
   </section>
-
   
-    <section class="card" id="cut01">
-      <div class="card-head">
-        <span class="num">CUT 01</span>
-        <span class="ttl">아침 08:00 · 시내버스 와이드 차창 프레임 (이지원 첫 등장)</span>
-        <span class="emo">감정톤: calm (서정 평온)</span>
-        <span class="role">👤 이지원 등장</span>
-      </div>
-
-      <div class="view-tabs">
-        <button class="vbtn active" onclick="setMode('cut01', 'side', this)">나란히 비교 (A ↔ B)</button>
-        <button class="vbtn" onclick="setMode('cut01', 'b', this)">완성 풍경 크게 보기 (Frame B)</button>
-        <button class="vbtn" onclick="setMode('cut01', 'a', this)">전환 전 기본 구도 (Frame A)</button>
-      </div>
-
-      <div class="grid" id="grid-cut01">
-        <div class="fbox box-a">
-          <div class="flbl">📐 Frame A · 16:9 가로형 평면 프레임 기본 구도 (전환 전)</div>
-          <a href="assets/cut01_a.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut01_a.jpg" alt="Cut 01 Frame A" loading="lazy">
-          </a>
-          <div class="fdesc">차분한 아침 거리 + 좌우 승객 실루엣 + 와이드 차창 옆 이지원 구도</div>
-        </div>
-        <div class="fbox hi box-b">
-          <div class="flbl gold">✨ Frame B · 16:9 서울 도시풍경·조명 정밀 완성본 (클릭 시 1920×1080 원본)</div>
-          <a href="assets/cut01_b.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut01_b.jpg" alt="Cut 01 Frame B" loading="lazy">
-          </a>
-          <div class="fdesc">노란 은행나무 가로수길 햇살 플레어와 희망찬 미소로 승격 편집</div>
-        </div>
-      </div>
-
-      <div class="meta-box">
-        <div class="vo-row">
-          <div><strong>🎙 이지원 시네마 자막 &amp; 내레이션:</strong> “바쁜 사람들이 오가는 서울의 아침, 우린 이 창을 통해 세상을 바라봐요.”</div>
-          <audio controls preload="none" src="assets/cut01_vo.mp3" class="cut-audio"></audio>
-        </div>
-        <div class="motion-line"><strong>🎬 16:9 동영상 모션 연출 설계:</strong> 와이드 버스 창밖 은행나무 햇살 플레어 패닝 + 이지원 잔잔한 미소</div>
-      </div>
-    </section>
-    
-    <section class="card" id="cut02">
-      <div class="card-head">
-        <span class="num">CUT 02</span>
-        <span class="ttl">오전 10:30 · 전철 한강철교 와이드 전망 프레임</span>
-        <span class="emo">감정톤: happy (설렘·환희)</span>
-        <span class="role">🎙 이지원 감성 VO · 와이드 평면 프레임</span>
-      </div>
-
-      <div class="view-tabs">
-        <button class="vbtn active" onclick="setMode('cut02', 'side', this)">나란히 비교 (A ↔ B)</button>
-        <button class="vbtn" onclick="setMode('cut02', 'b', this)">완성 풍경 크게 보기 (Frame B)</button>
-        <button class="vbtn" onclick="setMode('cut02', 'a', this)">전환 전 기본 구도 (Frame A)</button>
-      </div>
-
-      <div class="grid" id="grid-cut02">
-        <div class="fbox box-a">
-          <div class="flbl">📐 Frame A · 16:9 가로형 평면 프레임 기본 구도 (전환 전)</div>
-          <a href="assets/cut02_a.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut02_a.jpg" alt="Cut 02 Frame A" loading="lazy">
-          </a>
-          <div class="fdesc">좌우 입석 시민 실루엣 사이 한강철교 트러스로 진입하는 16:9 전철 창</div>
-        </div>
-        <div class="fbox hi box-b">
-          <div class="flbl gold">✨ Frame B · 16:9 서울 도시풍경·조명 정밀 완성본 (클릭 시 1920×1080 원본)</div>
-          <a href="assets/cut02_b.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut02_b.jpg" alt="Cut 02 Frame B" loading="lazy">
-          </a>
-          <div class="fdesc">와이드 창문 가득 펼쳐지는 철교 트러스·청록빛 한강·잠실 롯데월드타워</div>
-        </div>
-      </div>
-
-      <div class="meta-box">
-        <div class="vo-row">
-          <div><strong>🎙 이지원 시네마 자막 &amp; 내레이션:</strong> “단기권 찍고 탄 전철이 한강철교를 건널 때, 차창은 눈부신 전망대가 되죠.”</div>
-          <audio controls preload="none" src="assets/cut02_vo.mp3" class="cut-audio"></audio>
-        </div>
-        <div class="motion-line"><strong>🎬 16:9 동영상 모션 연출 설계:</strong> 열차 주행에 맞춰 16:9 와이드 차창 속 한강과 롯데타워 수평 이동</div>
-      </div>
-    </section>
-    
-    <section class="card" id="cut03">
-      <div class="card-head">
-        <span class="num">CUT 03</span>
-        <span class="ttl">낮 13:00 · 지상 전철 라운드 와이드 창문 (작가님 표준 구도)</span>
-        <span class="emo">감정톤: curious (맑은 호기심)</span>
-        <span class="role">🎙 이지원 감성 VO · 와이드 평면 프레임</span>
-      </div>
-
-      <div class="view-tabs">
-        <button class="vbtn active" onclick="setMode('cut03', 'side', this)">나란히 비교 (A ↔ B)</button>
-        <button class="vbtn" onclick="setMode('cut03', 'b', this)">완성 풍경 크게 보기 (Frame B)</button>
-        <button class="vbtn" onclick="setMode('cut03', 'a', this)">전환 전 기본 구도 (Frame A)</button>
-      </div>
-
-      <div class="grid" id="grid-cut03">
-        <div class="fbox box-a">
-          <div class="flbl">📐 Frame A · 16:9 가로형 평면 프레임 기본 구도 (전환 전)</div>
-          <a href="assets/cut03_a.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut03_a.jpg" alt="Cut 03 Frame A" loading="lazy">
-          </a>
-          <div class="fdesc">좌측 백팩 시민·우측 휴대폰 승객 실루엣 사이 은은한 낮 남산 능선</div>
-        </div>
-        <div class="fbox hi box-b">
-          <div class="flbl gold">✨ Frame B · 16:9 서울 도시풍경·조명 정밀 완성본 (클릭 시 1920×1080 원본)</div>
-          <a href="assets/cut03_b.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut03_b.jpg" alt="Cut 03 Frame B" loading="lazy">
-          </a>
-          <div class="fdesc">쾌청한 하늘 아래 초록 남산 능선·남산서울타워·한강 교량 파노라마 완성</div>
-        </div>
-      </div>
-
-      <div class="meta-box">
-        <div class="vo-row">
-          <div><strong>🎙 이지원 시네마 자막 &amp; 내레이션:</strong> “사람들 어깨 너머 유리창에 걸린 남산타워, 살아있는 그림 같지 않나요?”</div>
-          <audio controls preload="none" src="assets/cut03_vo.mp3" class="cut-audio"></audio>
-        </div>
-        <div class="motion-line"><strong>🎬 16:9 동영상 모션 연출 설계:</strong> 좌우 시민 실루엣 미세 호흡 너머 남산서울타워와 구름 패럴랙스</div>
-      </div>
-    </section>
-    
-    <section class="card" id="cut04">
-      <div class="card-head">
-        <span class="num">CUT 04</span>
-        <span class="ttl">오후 15:30 · 시내버스 고궁 단풍 와이드 투어 프레임</span>
-        <span class="emo">감정톤: happy (따뜻한 기쁨)</span>
-        <span class="role">🎙 이지원 감성 VO · 와이드 평면 프레임</span>
-      </div>
-
-      <div class="view-tabs">
-        <button class="vbtn active" onclick="setMode('cut04', 'side', this)">나란히 비교 (A ↔ B)</button>
-        <button class="vbtn" onclick="setMode('cut04', 'b', this)">완성 풍경 크게 보기 (Frame B)</button>
-        <button class="vbtn" onclick="setMode('cut04', 'a', this)">전환 전 기본 구도 (Frame A)</button>
-      </div>
-
-      <div class="grid" id="grid-cut04">
-        <div class="fbox box-a">
-          <div class="flbl">📐 Frame A · 16:9 가로형 평면 프레임 기본 구도 (전환 전)</div>
-          <a href="assets/cut04_a.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut04_a.jpg" alt="Cut 04 Frame A" loading="lazy">
-          </a>
-          <div class="fdesc">좌우 버스 승객 실루엣 사이 고궁 돌담길 초입 16:9 사각 차창</div>
-        </div>
-        <div class="fbox hi box-b">
-          <div class="flbl gold">✨ Frame B · 16:9 서울 도시풍경·조명 정밀 완성본 (클릭 시 1920×1080 원본)</div>
-          <a href="assets/cut04_b.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut04_b.jpg" alt="Cut 04 Frame B" loading="lazy">
-          </a>
-          <div class="fdesc">와이드 차창 가득 경복궁 기와지붕·돌담길·진홍 단풍·북악산 암봉 편집</div>
-        </div>
-      </div>
-
-      <div class="meta-box">
-        <div class="vo-row">
-          <div><strong>🎙 이지원 시네마 자막 &amp; 내레이션:</strong> “시내버스로 갈아타면, 차창 가득 경복궁 돌담길과 붉은 단풍이 흘러요.”</div>
-          <audio controls preload="none" src="assets/cut04_vo.mp3" class="cut-audio"></audio>
-        </div>
-        <div class="motion-line"><strong>🎬 16:9 동영상 모션 연출 설계:</strong> 와이드 버스 창 액자 속으로 고궁 돌담길과 단풍잎 주행 모션</div>
-      </div>
-    </section>
-    
-    <section class="card" id="cut05">
-      <div class="card-head">
-        <span class="num">CUT 05</span>
-        <span class="ttl">해질녘 17:15 · 여의도 선착장 와이드 통유리 프레임</span>
-        <span class="emo">감정톤: curious (노을빛 기대)</span>
-        <span class="role">🎙 이지원 감성 VO · 와이드 평면 프레임</span>
-      </div>
-
-      <div class="view-tabs">
-        <button class="vbtn active" onclick="setMode('cut05', 'side', this)">나란히 비교 (A ↔ B)</button>
-        <button class="vbtn" onclick="setMode('cut05', 'b', this)">완성 풍경 크게 보기 (Frame B)</button>
-        <button class="vbtn" onclick="setMode('cut05', 'a', this)">전환 전 기본 구도 (Frame A)</button>
-      </div>
-
-      <div class="grid" id="grid-cut05">
-        <div class="fbox box-a">
-          <div class="flbl">📐 Frame A · 16:9 가로형 평면 프레임 기본 구도 (전환 전)</div>
-          <a href="assets/cut05_a.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut05_a.jpg" alt="Cut 05 Frame A" loading="lazy">
-          </a>
-          <div class="fdesc">선착장 대합실 와이드 통유리 창틀과 원거리 접근 중인 수상버스</div>
-        </div>
-        <div class="fbox hi box-b">
-          <div class="flbl gold">✨ Frame B · 16:9 서울 도시풍경·조명 정밀 완성본 (클릭 시 1920×1080 원본)</div>
-          <a href="assets/cut05_b.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut05_b.jpg" alt="Cut 05 Frame B" loading="lazy">
-          </a>
-          <div class="fdesc">주홍빛 석양 한강 물결 위로 선착장에 입항하는 화이트·코랄 한강버스</div>
-        </div>
-      </div>
-
-      <div class="meta-box">
-        <div class="vo-row">
-          <div><strong>🎙 이지원 시네마 자막 &amp; 내레이션:</strong> “해 질 녘 여의도 선착장, 기다리는 시선 끝으로 한강버스가 다가오고,”</div>
-          <audio controls preload="none" src="assets/cut05_vo.mp3" class="cut-audio"></audio>
-        </div>
-        <div class="motion-line"><strong>🎬 16:9 동영상 모션 연출 설계:</strong> 대기 시민 실루엣 너머 잔물결을 가르며 와이드 창 안으로 입항</div>
-      </div>
-    </section>
-    
-    <section class="card" id="cut06">
-      <div class="card-head">
-        <span class="num">CUT 06</span>
-        <span class="ttl">노을 17:45 · 여의도 한강버스 선실 파노라마 프레임</span>
-        <span class="emo">감정톤: whisper (감성 독백)</span>
-        <span class="role">🎙 이지원 감성 VO · 와이드 평면 프레임</span>
-      </div>
-
-      <div class="view-tabs">
-        <button class="vbtn active" onclick="setMode('cut06', 'side', this)">나란히 비교 (A ↔ B)</button>
-        <button class="vbtn" onclick="setMode('cut06', 'b', this)">완성 풍경 크게 보기 (Frame B)</button>
-        <button class="vbtn" onclick="setMode('cut06', 'a', this)">전환 전 기본 구도 (Frame A)</button>
-      </div>
-
-      <div class="grid" id="grid-cut06">
-        <div class="fbox box-a">
-          <div class="flbl">📐 Frame A · 16:9 가로형 평면 프레임 기본 구도 (전환 전)</div>
-          <a href="assets/cut06_a.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut06_a.jpg" alt="Cut 06 Frame A" loading="lazy">
-          </a>
-          <div class="fdesc">좌우 좌석 승객 실루엣 사이 늦오후 물결의 16:9 선실 파노라마 창</div>
-        </div>
-        <div class="fbox hi box-b">
-          <div class="flbl gold">✨ Frame B · 16:9 서울 도시풍경·조명 정밀 완성본 (클릭 시 1920×1080 원본)</div>
-          <a href="assets/cut06_b.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut06_b.jpg" alt="Cut 06 Frame B" loading="lazy">
-          </a>
-          <div class="fdesc">타오르는 석양 태양과 황금빛 윤슬·여의도 63빌딩·원효대교 파노라마 완성</div>
-        </div>
-      </div>
-
-      <div class="meta-box">
-        <div class="vo-row">
-          <div><strong>🎙 이지원 시네마 자막 &amp; 내레이션:</strong> “삼천 원의 차창 너머, 물 위에서만 만나는 황금빛 윤슬이 마음을 적셔요.”</div>
-          <audio controls preload="none" src="assets/cut06_vo.mp3" class="cut-audio"></audio>
-        </div>
-        <div class="motion-line"><strong>🎬 16:9 동영상 모션 연출 설계:</strong> 물 위 눈높이 와이드 차창 가득 황금빛 한강 윤슬이 살아 반짝임</div>
-      </div>
-    </section>
-    
-    <section class="card" id="cut07">
-      <div class="card-head">
-        <span class="num">CUT 07</span>
-        <span class="ttl">매직아워 18:30 · 한강버스 야경 파노라마 프레임</span>
-        <span class="emo">감정톤: calm (매직아워 여운)</span>
-        <span class="role">🎙 이지원 감성 VO · 와이드 평면 프레임</span>
-      </div>
-
-      <div class="view-tabs">
-        <button class="vbtn active" onclick="setMode('cut07', 'side', this)">나란히 비교 (A ↔ B)</button>
-        <button class="vbtn" onclick="setMode('cut07', 'b', this)">완성 풍경 크게 보기 (Frame B)</button>
-        <button class="vbtn" onclick="setMode('cut07', 'a', this)">전환 전 기본 구도 (Frame A)</button>
-      </div>
-
-      <div class="grid" id="grid-cut07">
-        <div class="fbox box-a">
-          <div class="flbl">📐 Frame A · 16:9 가로형 평면 프레임 기본 구도 (전환 전)</div>
-          <a href="assets/cut07_a.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut07_a.jpg" alt="Cut 07 Frame A" loading="lazy">
-          </a>
-          <div class="fdesc">어둑한 선실 승객 실루엣 사이 분수 가동 직전 코발트블루 반포대교</div>
-        </div>
-        <div class="fbox hi box-b">
-          <div class="flbl gold">✨ Frame B · 16:9 서울 도시풍경·조명 정밀 완성본 (클릭 시 1920×1080 원본)</div>
-          <a href="assets/cut07_b.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut07_b.jpg" alt="Cut 07 Frame B" loading="lazy">
-          </a>
-          <div class="fdesc">와이드 창 가득 반포대교 달빛무지개분수 오색 물줄기와 남산타워 야경</div>
-        </div>
-      </div>
-
-      <div class="meta-box">
-        <div class="vo-row">
-          <div><strong>🎙 이지원 시네마 자막 &amp; 내레이션:</strong> “푸른 어둠이 내리면, 차창 밖 무지개분수가 서울의 밤을 깨웁니다.”</div>
-          <audio controls preload="none" src="assets/cut07_vo.mp3" class="cut-audio"></audio>
-        </div>
-        <div class="motion-line"><strong>🎬 16:9 동영상 모션 연출 설계:</strong> 16:9 와이드 선실 차창 밖으로 오색 무지개분수가 강물 위로 쏟아짐</div>
-      </div>
-    </section>
-    
-    <section class="card" id="cut08">
-      <div class="card-head">
-        <span class="num">CUT 08</span>
-        <span class="ttl">밤 20:30 · 성곽길 가로형 안드로이드 카메라 녹화 프레임</span>
-        <span class="emo">감정톤: curious (기록의 설렘)</span>
-        <span class="role">🎙 이지원 감성 VO · 와이드 평면 프레임</span>
-      </div>
-
-      <div class="view-tabs">
-        <button class="vbtn active" onclick="setMode('cut08', 'side', this)">나란히 비교 (A ↔ B)</button>
-        <button class="vbtn" onclick="setMode('cut08', 'b', this)">완성 풍경 크게 보기 (Frame B)</button>
-        <button class="vbtn" onclick="setMode('cut08', 'a', this)">전환 전 기본 구도 (Frame A)</button>
-      </div>
-
-      <div class="grid" id="grid-cut08">
-        <div class="fbox box-a">
-          <div class="flbl">📐 Frame A · 16:9 가로형 평면 프레임 기본 구도 (전환 전)</div>
-          <a href="assets/cut08_a.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut08_a.jpg" alt="Cut 08 Frame A" loading="lazy">
-          </a>
-          <div class="fdesc">좌우 성곽길 산책 보케 속 두 손으로 든 가로형 스마트폰 촬영 대기 화면</div>
-        </div>
-        <div class="fbox hi box-b">
-          <div class="flbl gold">✨ Frame B · 16:9 서울 도시풍경·조명 정밀 완성본 (클릭 시 1920×1080 원본)</div>
-          <a href="assets/cut08_b.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut08_b.jpg" alt="Cut 08 Frame B" loading="lazy">
-          </a>
-          <div class="fdesc">클린 녹화 뷰파인더(빨간 REC 점·포커스 코너) 속 성곽 암문과 서울 야경 바다</div>
-        </div>
-      </div>
-
-      <div class="meta-box">
-        <div class="vo-row">
-          <div><strong>🎙 이지원 시네마 자막 &amp; 내레이션:</strong> “성곽길 밤산책에선 휴대폰 카메라 화면이 서울 야경을 담는 프레임이 되죠.”</div>
-          <audio controls preload="none" src="assets/cut08_vo.mp3" class="cut-audio"></audio>
-        </div>
-        <div class="motion-line"><strong>🎬 16:9 동영상 모션 연출 설계:</strong> 가로 녹화 뷰파인더 프레임 안에서 빛나는 성곽길과 도심 불빛 호흡</div>
-      </div>
-    </section>
-    
-    <section class="card" id="cut09">
-      <div class="card-head">
-        <span class="num">CUT 09</span>
-        <span class="ttl">심야 22:00 · 와이드 굴다리 아치 & 하천 수면 프레임 (동행 안심벨)</span>
-        <span class="emo">감정톤: whisper (다정한 안심)</span>
-        <span class="role">🎙 이지원 감성 VO · 와이드 평면 프레임</span>
-      </div>
-
-      <div class="view-tabs">
-        <button class="vbtn active" onclick="setMode('cut09', 'side', this)">나란히 비교 (A ↔ B)</button>
-        <button class="vbtn" onclick="setMode('cut09', 'b', this)">완성 풍경 크게 보기 (Frame B)</button>
-        <button class="vbtn" onclick="setMode('cut09', 'a', this)">전환 전 기본 구도 (Frame A)</button>
-      </div>
-
-      <div class="grid" id="grid-cut09">
-        <div class="fbox box-a">
-          <div class="flbl">📐 Frame A · 16:9 가로형 평면 프레임 기본 구도 (전환 전)</div>
-          <a href="assets/cut09_a.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut09_a.jpg" alt="Cut 09 Frame A" loading="lazy">
-          </a>
-          <div class="fdesc">와이드 굴다리 아치(상·좌우)와 하천 수면(하단) 프레임 + 점등 전 민트 안심벨</div>
-        </div>
-        <div class="fbox hi box-b">
-          <div class="flbl gold">✨ Frame B · 16:9 서울 도시풍경·조명 정밀 완성본 (클릭 시 1920×1080 원본)</div>
-          <a href="assets/cut09_b.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut09_b.jpg" alt="Cut 09 Frame B" loading="lazy">
-          </a>
-          <div class="fdesc">하천 황금 물빛 반영 강화 + 우측 가방 스트랩 동행 안심벨 에메랄드 LED 점등</div>
-        </div>
-      </div>
-
-      <div class="meta-box">
-        <div class="vo-row">
-          <div><strong>🎙 이지원 시네마 자막 &amp; 내레이션:</strong> “굴다리와 하천 물빛의 밤길도, 동행 안심벨이 있어 발걸음은 평온해요.”</div>
-          <audio controls preload="none" src="assets/cut09_vo.mp3" class="cut-audio"></audio>
-        </div>
-        <div class="motion-line"><strong>🎬 16:9 동영상 모션 연출 설계:</strong> 하천 수면 금빛 물결 일렁임 + 가방 속 동행 안심벨 민트 LED 은은한 맥동</div>
-      </div>
-    </section>
-    
-    <section class="card" id="cut10">
-      <div class="card-head">
-        <span class="num">CUT 10</span>
-        <span class="ttl">피날레 22:30 · 한강 불꽃축제와 이지원 뒷모습 와이드 정자 프레임</span>
-        <span class="emo">감정톤: happy (벅찬 피날레)</span>
-        <span class="role">👤 이지원 등장</span>
-      </div>
-
-      <div class="view-tabs">
-        <button class="vbtn active" onclick="setMode('cut10', 'side', this)">나란히 비교 (A ↔ B)</button>
-        <button class="vbtn" onclick="setMode('cut10', 'b', this)">완성 풍경 크게 보기 (Frame B)</button>
-        <button class="vbtn" onclick="setMode('cut10', 'a', this)">전환 전 기본 구도 (Frame A)</button>
-      </div>
-
-      <div class="grid" id="grid-cut10">
-        <div class="fbox box-a">
-          <div class="flbl">📐 Frame A · 16:9 가로형 평면 프레임 기본 구도 (전환 전)</div>
-          <a href="assets/cut10_a.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut10_a.jpg" alt="Cut 10 Frame A" loading="lazy">
-          </a>
-          <div class="fdesc">한강 수변 정자 와이드 프레임 너머 강변 벤치에 앉은 이지원 뒷모습과 시민들</div>
-        </div>
-        <div class="fbox hi box-b">
-          <div class="flbl gold">✨ Frame B · 16:9 서울 도시풍경·조명 정밀 완성본 (클릭 시 1920×1080 원본)</div>
-          <a href="assets/cut10_b.jpg" target="_blank" rel="noopener">
-            <img src="assets/cut10_b.jpg" alt="Cut 10 Frame B" loading="lazy">
-          </a>
-          <div class="fdesc">와이드 정자 프레임과 이지원 뒷모습 위로 밤하늘 가득 피어나는 오색 불꽃축제</div>
-        </div>
-      </div>
-
-      <div class="meta-box">
-        <div class="vo-row">
-          <div><strong>🎙 이지원 시네마 자막 &amp; 내레이션:</strong> “같지만 다른 풍경이 기다리는 오늘, 낮부터 밤까지 여러분의 프레임이 되어 드립니다.”</div>
-          <audio controls preload="none" src="assets/cut10_vo.mp3" class="cut-audio"></audio>
-        </div>
-        <div class="motion-line"><strong>🎬 16:9 동영상 모션 연출 설계:</strong> 수변 정자 프레임 너머 벤치에 앉은 이지원 위로 한강 와이드 폭죽 개화</div>
-      </div>
-    </section>
-    
+            <section class="card" id="cut01">
+              <div class="card-head">
+                <span class="num">CUT 01</span>
+                <span class="act">1막 · 시선 발견 & 서울 입성</span>
+                <span class="ttl">1막 · 작은 화면 속 일상 (서울 지하철 7인석 파란 롱시트)</span>
+                <span class="emo">감정: calm</span>
+              </div>
+              <div class="anchor-bar">🪑 실사 좌석·창틀 고증: <strong>[실사고증 ① 지하철] 파란 7인석 직물 롱시트 · 하단 타공 히터망 · 스텐 짐선반</strong></div>
+              <div class="view-tabs">
+                <button class="vbtn active" onclick="setMode('cut01','side',this)">나란히 비교 (A ↔ B)</button>
+                <button class="vbtn" onclick="setMode('cut01','b',this)">완성 풍경 크게 보기 (Frame B)</button>
+                <button class="vbtn" onclick="setMode('cut01','a',this)">도입 기준 구도 (Frame A)</button>
+              </div>
+              <div class="grid" id="grid-cut01">
+                <div class="fbox box-a">
+                  <div class="flbl">📐 Frame A · 실제 좌석·창틀 도입 구도</div>
+                  <a href="assets_v5/cut01_a.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut01_a.jpg" alt="Cut 01 A" loading="lazy"></a>
+                  <div class="fdesc">파란 7인석 직물 롱시트·타공 히터망·스텐 짐선반 — 고개 숙인 승객들 사이 폰을 보는 이지원</div>
+                </div>
+                <div class="fbox hi box-b">
+                  <div class="flbl gold">✨ Frame B · 시선 확장·서울 풍경 완성본 (클릭 시 1920×1080 원본)</div>
+                  <a href="assets_v5/cut01_b.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut01_b.jpg" alt="Cut 01 B" loading="lazy"></a>
+                  <div class="fdesc">이지원이 휴대폰을 무릎으로 내리고 미소 지으며 맞은편 창을 향해 고개를 듦</div>
+                </div>
+              </div>
+              <div class="meta-box">
+                <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;">
+                  <div><strong>🎙 이지원 편지 내레이션:</strong> “서울에 살다 보면 다들 작은 휴대폰만 보느라 잊고 지내거든.”</div>
+                  <audio controls preload="none" src="assets_v5/cut01_vo.mp3" style="height:34px;max-width:250px;"></audio>
+                </div>
+                <div style="margin-top:6px;color:#fcd34d;font-size:13.5px;">🎬 연출 포인트: 모두가 고개 숙여 작은 스마트폰만 보는 출근길, 친구의 메시지에 고개를 드는 이지원</div>
+              </div>
+            </section>
+            
+            <section class="card" id="cut02">
+              <div class="card-head">
+                <span class="num">CUT 02</span>
+                <span class="act">1막 · 시선 발견 & 서울 입성</span>
+                <span class="ttl">1막 · 타지역 친구의 서울 진입 (KTX·SRT 실제 좌석 & 창가 테이블)</span>
+                <span class="emo">감정: curious</span>
+              </div>
+              <div class="anchor-bar">🪑 실사 좌석·창틀 고증: <strong>[실사고증 ② KTX·SRT] 네이비 시트 하얀 헤드커버 · 창가 미니 테이블 · 상단 롤블라인드</strong></div>
+              <div class="view-tabs">
+                <button class="vbtn active" onclick="setMode('cut02','side',this)">나란히 비교 (A ↔ B)</button>
+                <button class="vbtn" onclick="setMode('cut02','b',this)">완성 풍경 크게 보기 (Frame B)</button>
+                <button class="vbtn" onclick="setMode('cut02','a',this)">도입 기준 구도 (Frame A)</button>
+              </div>
+              <div class="grid" id="grid-cut02">
+                <div class="fbox box-a">
+                  <div class="flbl">📐 Frame A · 실제 좌석·창틀 도입 구도</div>
+                  <a href="assets_v5/cut02_a.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut02_a.jpg" alt="Cut 02 A" loading="lazy"></a>
+                  <div class="fdesc">실제 KTX 마주 보는 네이비 시트(하얀 헤드커버)·창가 미니 테이블 커피컵·아침 안개 들판 주행</div>
+                </div>
+                <div class="fbox hi box-b">
+                  <div class="flbl gold">✨ Frame B · 시선 확장·서울 풍경 완성본 (클릭 시 1920×1080 원본)</div>
+                  <a href="assets_v5/cut02_b.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut02_b.jpg" alt="Cut 02 B" loading="lazy"></a>
+                  <div class="fdesc">KTX가 한강철교에 진입하며 넓은 라운드 창밖으로 푸른 한강과 남산서울타워가 펼쳐짐</div>
+                </div>
+              </div>
+              <div class="meta-box">
+                <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;">
+                  <div><strong>🎙 이지원 편지 내레이션:</strong> “주말에 기차 타고 온다는 네 연락에, 네가 마주할 창문들을 따라가 봤어.”</div>
+                  <audio controls preload="none" src="assets_v5/cut02_vo.mp3" style="height:34px;max-width:250px;"></audio>
+                </div>
+                <div style="margin-top:6px;color:#fcd34d;font-size:13.5px;">🎬 연출 포인트: 네이비 시트 하얀 헤드커버와 창가 커피 테이블 너머 한강·남산타워로 열리는 서울의 첫 창</div>
+              </div>
+            </section>
+            
+            <section class="card" id="cut03">
+              <div class="card-head">
+                <span class="num">CUT 03</span>
+                <span class="act">2막 · 실제 대중교통 좌석 차창 여정</span>
+                <span class="ttl">2막 · 지하철 2호선 한강 구간 (연두색 버킷 롱시트 & 상단 블루 선팅 창)</span>
+                <span class="emo">감정: happy</span>
+              </div>
+              <div class="anchor-bar">🪑 실사 좌석·창틀 고증: <strong>[실사고증 ① 지하철 2호선] 연두색 5인 버킷 롱시트 · 곡선 스텐 수직봉 · 상단 블루 선팅 통창</strong></div>
+              <div class="view-tabs">
+                <button class="vbtn active" onclick="setMode('cut03','side',this)">나란히 비교 (A ↔ B)</button>
+                <button class="vbtn" onclick="setMode('cut03','b',this)">완성 풍경 크게 보기 (Frame B)</button>
+                <button class="vbtn" onclick="setMode('cut03','a',this)">도입 기준 구도 (Frame A)</button>
+              </div>
+              <div class="grid" id="grid-cut03">
+                <div class="fbox box-a">
+                  <div class="flbl">📐 Frame A · 실제 좌석·창틀 도입 구도</div>
+                  <a href="assets_v5/cut03_a.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut03_a.jpg" alt="Cut 03 A" loading="lazy"></a>
+                  <div class="fdesc">신형 2호선 연두색 성형 롱시트·중앙 곡선 스텐봉·상단 블루 선팅 창 — 철교 트러스 진입</div>
+                </div>
+                <div class="fbox hi box-b">
+                  <div class="flbl gold">✨ Frame B · 시선 확장·서울 풍경 완성본 (클릭 시 1920×1080 원본)</div>
+                  <a href="assets_v5/cut03_b.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut03_b.jpg" alt="Cut 03 B" loading="lazy"></a>
+                  <div class="fdesc">연두색 롱시트 너머 파노라마 통창 가득 청록빛 한강과 여의도 초고층 스카이라인이 열림</div>
+                </div>
+              </div>
+              <div class="meta-box">
+                <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;">
+                  <div><strong>🎙 이지원 편지 내레이션:</strong> “역에서 내려 전철만 갈아타도, 평범한 차창이 눈부신 한강 전망대가 되고,”</div>
+                  <audio controls preload="none" src="assets_v5/cut03_vo.mp3" style="height:34px;max-width:250px;"></audio>
+                </div>
+                <div style="margin-top:6px;color:#fcd34d;font-size:13.5px;">🎬 연출 포인트: 기차역에서 내려 갈아탄 2호선 객차 창문이 곧바로 눈부신 여의도·한강 전망대가 되는 순간</div>
+              </div>
+            </section>
+            
+            <section class="card" id="cut04">
+              <div class="card-head">
+                <span class="num">CUT 04</span>
+                <span class="act">2막 · 실제 대중교통 좌석 차창 여정</span>
+                <span class="ttl">2막 · 지상 전철 남산 파노라마 (2연속 상단 개폐창 & 파란 롱시트)</span>
+                <span class="emo">감정: happy</span>
+              </div>
+              <div class="anchor-bar">🪑 실사 좌석·창틀 고증: <strong>[실사고증 ① 수도권 전철] 상단 1/4 환기창 바 2연속 창틀 · 파란 직물 롱시트</strong></div>
+              <div class="view-tabs">
+                <button class="vbtn active" onclick="setMode('cut04','side',this)">나란히 비교 (A ↔ B)</button>
+                <button class="vbtn" onclick="setMode('cut04','b',this)">완성 풍경 크게 보기 (Frame B)</button>
+                <button class="vbtn" onclick="setMode('cut04','a',this)">도입 기준 구도 (Frame A)</button>
+              </div>
+              <div class="grid" id="grid-cut04">
+                <div class="fbox box-a">
+                  <div class="flbl">📐 Frame A · 실제 좌석·창틀 도입 구도</div>
+                  <a href="assets_v5/cut04_a.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut04_a.jpg" alt="Cut 04 A" loading="lazy"></a>
+                  <div class="fdesc">한국 수도권 전철 2연속 라운드 창(상단 1/4 개폐창 바) + 파란 롱시트 등받이 + 은은한 낮 남산</div>
+                </div>
+                <div class="fbox hi box-b">
+                  <div class="flbl gold">✨ Frame B · 시선 확장·서울 풍경 완성본 (클릭 시 1920×1080 원본)</div>
+                  <a href="assets_v5/cut04_b.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut04_b.jpg" alt="Cut 04 B" loading="lazy"></a>
+                  <div class="fdesc">2연속 전철 창틀 가득 쾌청한 파란 하늘·초록 남산 능선·남산서울타워·한강 다리 파노라마</div>
+                </div>
+              </div>
+              <div class="meta-box">
+                <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;">
+                  <div><strong>🎙 이지원 편지 내레이션:</strong> “비싼 전망대 표 없이 교통카드 한 장이면 남산이 그림처럼 걸려.”</div>
+                  <audio controls preload="none" src="assets_v5/cut04_vo.mp3" style="height:34px;max-width:250px;"></audio>
+                </div>
+                <div style="margin-top:6px;color:#fcd34d;font-size:13.5px;">🎬 연출 포인트: 상단 1/4 환기창 가로 바가 있는 한국형 2연속 전철 창문에 액자처럼 걸린 남산서울타워</div>
+              </div>
+            </section>
+            
+            <section class="card" id="cut05">
+              <div class="card-head">
+                <span class="num">CUT 05</span>
+                <span class="act">2막 · 실제 대중교통 좌석 차창 여정</span>
+                <span class="ttl">2막 · 서울 시내버스 고궁 돌담길 (전방 시트·노란 안전봉·2분할 미닫이창)</span>
+                <span class="emo">감정: happy</span>
+              </div>
+              <div class="anchor-bar">🪑 실사 좌석·창틀 고증: <strong>[실사고증 ③ 시내버스] 전방 배열 플라스틱/파란 시트 · 노란 안전봉 · 상단 채광창+검은 2분할 미닫이창</strong></div>
+              <div class="view-tabs">
+                <button class="vbtn active" onclick="setMode('cut05','side',this)">나란히 비교 (A ↔ B)</button>
+                <button class="vbtn" onclick="setMode('cut05','b',this)">완성 풍경 크게 보기 (Frame B)</button>
+                <button class="vbtn" onclick="setMode('cut05','a',this)">도입 기준 구도 (Frame A)</button>
+              </div>
+              <div class="grid" id="grid-cut05">
+                <div class="fbox box-a">
+                  <div class="flbl">📐 Frame A · 실제 좌석·창틀 도입 구도</div>
+                  <a href="assets_v5/cut05_a.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut05_a.jpg" alt="Cut 05 A" loading="lazy"></a>
+                  <div class="fdesc">실제 서울 시내버스 회색/파란 전방 시트·노란 수직 안전봉·검은 2분할 미닫이창 — 돌담길 초입</div>
+                </div>
+                <div class="fbox hi box-b">
+                  <div class="flbl gold">✨ Frame B · 시선 확장·서울 풍경 완성본 (클릭 시 1920×1080 원본)</div>
+                  <a href="assets_v5/cut05_b.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut05_b.jpg" alt="Cut 05 B" loading="lazy"></a>
+                  <div class="fdesc">시내버스 2분할 미닫이 창밖으로 햇살 머금은 경복궁 기와지붕·돌담길·진홍 단풍·북악산이 펼쳐짐</div>
+                </div>
+              </div>
+              <div class="meta-box">
+                <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;">
+                  <div><strong>🎙 이지원 편지 내레이션:</strong> “시내버스 창가에 앉으면 경복궁 돌담길 단풍이 바로 눈앞을 스쳐 가고,”</div>
+                  <audio controls preload="none" src="assets_v5/cut05_vo.mp3" style="height:34px;max-width:250px;"></audio>
+                </div>
+                <div style="margin-top:6px;color:#fcd34d;font-size:13.5px;">🎬 연출 포인트: 상단 채광창과 검은 2분할 미닫이 옆창 너머 손 닿을 듯 흐르는 경복궁 단풍길</div>
+              </div>
+            </section>
+            
+            <section class="card" id="cut06">
+              <div class="card-head">
+                <span class="num">CUT 06</span>
+                <span class="act">2막 · 실제 대중교통 좌석 차창 여정</span>
+                <span class="ttl">2막 · 여의도 한강버스 석양 윤슬 (천장 스카이라이트 창 & 연베이지 가죽 시트)</span>
+                <span class="emo">감정: whisper</span>
+              </div>
+              <div class="anchor-bar">🪑 실사 좌석·창틀 고증: <strong>[실사고증 ④ 한강버스] 천장 라운드 스카이라이트 창 · 크림 창틀 · 연베이지 가죽 시트+우드 팔걸이</strong></div>
+              <div class="view-tabs">
+                <button class="vbtn active" onclick="setMode('cut06','side',this)">나란히 비교 (A ↔ B)</button>
+                <button class="vbtn" onclick="setMode('cut06','b',this)">완성 풍경 크게 보기 (Frame B)</button>
+                <button class="vbtn" onclick="setMode('cut06','a',this)">도입 기준 구도 (Frame A)</button>
+              </div>
+              <div class="grid" id="grid-cut06">
+                <div class="fbox box-a">
+                  <div class="flbl">📐 Frame A · 실제 좌석·창틀 도입 구도</div>
+                  <a href="assets_v5/cut06_a.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut06_a.jpg" alt="Cut 06 A" loading="lazy"></a>
+                  <div class="fdesc">실제 한강버스 크림 창틀·천장 스카이라이트 유리창·연베이지 가죽 시트(우드 팔걸이) 늦오후 뷰</div>
+                </div>
+                <div class="fbox hi box-b">
+                  <div class="flbl gold">✨ Frame B · 시선 확장·서울 풍경 완성본 (클릭 시 1920×1080 원본)</div>
+                  <a href="assets_v5/cut06_b.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut06_b.jpg" alt="Cut 06 B" loading="lazy"></a>
+                  <div class="fdesc">천장 스카이라이트에 노을 구름이 물들고 수면 눈높이 창밖으로 63빌딩과 황금빛 윤슬이 타오름</div>
+                </div>
+              </div>
+              <div class="meta-box">
+                <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;">
+                  <div><strong>🎙 이지원 편지 내레이션:</strong> “해 질 녘엔 버스 요금으로 배를 타자. 물 위에서 보는 이 노을을 꼭 보여주고 싶었어.”</div>
+                  <audio controls preload="none" src="assets_v5/cut06_vo.mp3" style="height:34px;max-width:250px;"></audio>
+                </div>
+                <div style="margin-top:6px;color:#fcd34d;font-size:13.5px;">🎬 연출 포인트: 천장 스카이라이트 유리창과 연베이지 좌석 너머 수면 눈높이에서 만나는 63빌딩 황금 노을</div>
+              </div>
+            </section>
+            
+            <section class="card" id="cut07">
+              <div class="card-head">
+                <span class="num">CUT 07</span>
+                <span class="act">2막 · 실제 대중교통 좌석 차창 여정</span>
+                <span class="ttl">2막 · 여의도 한강버스 야간 운항 (동일 스카이라이트 선실 & 반포 무지개분수)</span>
+                <span class="emo">감정: calm</span>
+              </div>
+              <div class="anchor-bar">🪑 실사 좌석·창틀 고증: <strong>[실사고증 ④ 한강버스 야간] 천장 스카이라이트 푸른 밤하늘 · 베이지 가죽 시트 선실</strong></div>
+              <div class="view-tabs">
+                <button class="vbtn active" onclick="setMode('cut07','side',this)">나란히 비교 (A ↔ B)</button>
+                <button class="vbtn" onclick="setMode('cut07','b',this)">완성 풍경 크게 보기 (Frame B)</button>
+                <button class="vbtn" onclick="setMode('cut07','a',this)">도입 기준 구도 (Frame A)</button>
+              </div>
+              <div class="grid" id="grid-cut07">
+                <div class="fbox box-a">
+                  <div class="flbl">📐 Frame A · 실제 좌석·창틀 도입 구도</div>
+                  <a href="assets_v5/cut07_a.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut07_a.jpg" alt="Cut 07 A" loading="lazy"></a>
+                  <div class="fdesc">야간 간접등이 켜진 동일 한강버스 베이지 시트 선실 — 분수 가동 직전 코발트블루 반포대교</div>
+                </div>
+                <div class="fbox hi box-b">
+                  <div class="flbl gold">✨ Frame B · 시선 확장·서울 풍경 완성본 (클릭 시 1920×1080 원본)</div>
+                  <a href="assets_v5/cut07_b.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut07_b.jpg" alt="Cut 07 B" loading="lazy"></a>
+                  <div class="fdesc">선실 창밖으로 반포대교 달빛무지개분수의 오색 물줄기와 남산타워 야경이 화려하게 쏟아짐</div>
+                </div>
+              </div>
+              <div class="meta-box">
+                <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;">
+                  <div><strong>🎙 이지원 편지 내레이션:</strong> “푸른 밤이 내리고 무지개분수가 켜지면, 이제 창문 밖으로 나갈 시간이야.”</div>
+                  <audio controls preload="none" src="assets_v5/cut07_vo.mp3" style="height:34px;max-width:250px;"></audio>
+                </div>
+                <div style="margin-top:6px;color:#fcd34d;font-size:13.5px;">🎬 연출 포인트: 푸른 밤하늘이 비치는 천장 스카이라이트 아래 반포 달빛무지개분수가 쏟아지는 매직아워</div>
+              </div>
+            </section>
+            
+            <section class="card" id="cut08">
+              <div class="card-head">
+                <span class="num">CUT 08</span>
+                <span class="act">3막 · Open Frame 밤산책 & 초대</span>
+                <span class="ttl">3막 · 프레임을 깨고 서울의 밤 속으로 (선착장 하선 · Open Frame 해방)</span>
+                <span class="emo">감정: curious</span>
+              </div>
+              <div class="anchor-bar">🪑 실사 좌석·창틀 고증: <strong>[3막 오픈프레임 ①] 선착장 자동문 개방 -> 창틀 없는 개방형 한강 수변 데크</strong></div>
+              <div class="view-tabs">
+                <button class="vbtn active" onclick="setMode('cut08','side',this)">나란히 비교 (A ↔ B)</button>
+                <button class="vbtn" onclick="setMode('cut08','b',this)">완성 풍경 크게 보기 (Frame B)</button>
+                <button class="vbtn" onclick="setMode('cut08','a',this)">도입 기준 구도 (Frame A)</button>
+              </div>
+              <div class="grid" id="grid-cut08">
+                <div class="fbox box-a">
+                  <div class="flbl">📐 Frame A · 실제 좌석·창틀 도입 구도</div>
+                  <a href="assets_v5/cut08_a.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut08_a.jpg" alt="Cut 08 A" loading="lazy"></a>
+                  <div class="fdesc">한강 선착장 슬라이딩 유리문이 양옆으로 열리며 야간 수변 산책로로 나서는 이지원 뒷모습</div>
+                </div>
+                <div class="fbox hi box-b">
+                  <div class="flbl gold">✨ Frame B · 시선 확장·서울 풍경 완성본 (클릭 시 1920×1080 원본)</div>
+                  <a href="assets_v5/cut08_b.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut08_b.jpg" alt="Cut 08 B" loading="lazy"></a>
+                  <div class="fdesc">창틀과 기둥이 완전히 사라진 개방형 16:9 한강 수변 데크를 시원하게 걸어 나가는 이지원</div>
+                </div>
+              </div>
+              <div class="meta-box">
+                <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;">
+                  <div><strong>🎙 이지원 편지 내레이션:</strong> “낮 동안 창너머로 보던 그 야경 속으로, 밤엔 그냥 걸어 나와도 괜찮아.”</div>
+                  <audio controls preload="none" src="assets_v5/cut08_vo.mp3" style="height:34px;max-width:250px;"></audio>
+                </div>
+                <div style="margin-top:6px;color:#fcd34d;font-size:13.5px;">🎬 연출 포인트: 선착장 유리 자동문이 열리며 차창 프레임을 벗어나 탁 트인 한강 수변 밤공기로 걸어 나오는 순간</div>
+              </div>
+            </section>
+            
+            <section class="card" id="cut09">
+              <div class="card-head">
+                <span class="num">CUT 09</span>
+                <span class="act">3막 · Open Frame 밤산책 & 초대</span>
+                <span class="ttl">3막 · 다정하게 지켜주는 서울의 밤길 (수변 산책로 & 동행 안심벨)</span>
+                <span class="emo">감정: whisper</span>
+              </div>
+              <div class="anchor-bar">🪑 실사 좌석·창틀 고증: <strong>[3막 오픈프레임 ②] 개방형 수변 산책로 · 가방 스트랩 동행 안심벨 클로즈업</strong></div>
+              <div class="view-tabs">
+                <button class="vbtn active" onclick="setMode('cut09','side',this)">나란히 비교 (A ↔ B)</button>
+                <button class="vbtn" onclick="setMode('cut09','b',this)">완성 풍경 크게 보기 (Frame B)</button>
+                <button class="vbtn" onclick="setMode('cut09','a',this)">도입 기준 구도 (Frame A)</button>
+              </div>
+              <div class="grid" id="grid-cut09">
+                <div class="fbox box-a">
+                  <div class="flbl">📐 Frame A · 실제 좌석·창틀 도입 구도</div>
+                  <a href="assets_v5/cut09_a.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut09_a.jpg" alt="Cut 09 A" loading="lazy"></a>
+                  <div class="fdesc">따뜻한 가로등 불빛의 개방형 한강 산책로를 걷는 이지원 뒷모습과 가방 속 민트 동행 안심벨</div>
+                </div>
+                <div class="fbox hi box-b">
+                  <div class="flbl gold">✨ Frame B · 시선 확장·서울 풍경 완성본 (클릭 시 1920×1080 원본)</div>
+                  <a href="assets_v5/cut09_b.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut09_b.jpg" alt="Cut 09 B" loading="lazy"></a>
+                  <div class="fdesc">크림색 숄더백 스트랩에 달린 파스텔 민트 동행 안심벨 키링에 에메랄드 민트 LED 링이 반짝임</div>
+                </div>
+              </div>
+              <div class="meta-box">
+                <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;">
+                  <div><strong>🎙 이지원 편지 내레이션:</strong> “혼자 걷는 늦은 밤길까지 조용히 지켜주는, 참 다정한 도시거든.”</div>
+                  <audio controls preload="none" src="assets_v5/cut09_vo.mp3" style="height:34px;max-width:250px;"></audio>
+                </div>
+                <div style="margin-top:6px;color:#fcd34d;font-size:13.5px;">🎬 연출 포인트: 억지 굴다리 프레임 없이 밝은 가로등 산책로를 걷는 발걸음과 가방 속 동행 안심벨 민트 불빛</div>
+              </div>
+            </section>
+            
+            <section class="card" id="cut10">
+              <div class="card-head">
+                <span class="num">CUT 10</span>
+                <span class="act">3막 · Open Frame 밤산책 & 초대</span>
+                <span class="ttl">피날레 · 친구를 위해 비워둔 한강 벤치 옆자리 & 불꽃축제</span>
+                <span class="emo">감정: happy</span>
+              </div>
+              <div class="anchor-bar">🪑 실사 좌석·창틀 고증: <strong>[3막 오픈프레임 ③ 피날레] 기둥 없는 개방형 한강 벤치 (좌측 이지원 · 우측 빈 옆자리)</strong></div>
+              <div class="view-tabs">
+                <button class="vbtn active" onclick="setMode('cut10','side',this)">나란히 비교 (A ↔ B)</button>
+                <button class="vbtn" onclick="setMode('cut10','b',this)">완성 풍경 크게 보기 (Frame B)</button>
+                <button class="vbtn" onclick="setMode('cut10','a',this)">도입 기준 구도 (Frame A)</button>
+              </div>
+              <div class="grid" id="grid-cut10">
+                <div class="fbox box-a">
+                  <div class="flbl">📐 Frame A · 실제 좌석·창틀 도입 구도</div>
+                  <a href="assets_v5/cut10_a.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut10_a.jpg" alt="Cut 10 A" loading="lazy"></a>
+                  <div class="fdesc">기둥 없는 탁 트인 한강 수변 벤치 왼쪽에 앉아 오른쪽 친구 옆자리를 비워둔 이지원 뒷모습</div>
+                </div>
+                <div class="fbox hi box-b">
+                  <div class="flbl gold">✨ Frame B · 시선 확장·서울 풍경 완성본 (클릭 시 1920×1080 원본)</div>
+                  <a href="assets_v5/cut10_b.jpg" target="_blank" rel="noopener"><img src="assets_v5/cut10_b.jpg" alt="Cut 10 B" loading="lazy"></a>
+                  <div class="fdesc">비워둔 오른쪽 벤치 옆자리 너머 한강 밤하늘 가득 화려한 오색 불꽃축제가 개화하며 물 위에 비침</div>
+                </div>
+              </div>
+              <div class="meta-box">
+                <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;">
+                  <div><strong>🎙 이지원 편지 내레이션:</strong> “이번 주말, 내 옆자리 비워둘게. 어서 와, 내가 소개하고 싶은 서울로.”</div>
+                  <audio controls preload="none" src="assets_v5/cut10_vo.mp3" style="height:34px;max-width:250px;"></audio>
+                </div>
+                <div style="margin-top:6px;color:#fcd34d;font-size:13.5px;">🎬 연출 포인트: 기둥 가림 없는 개방형 한강 야경 벤치 왼쪽에 앉아 오른쪽 옆자리를 친구를 위해 비워둔 초대</div>
+              </div>
+            </section>
+            
 </div>
 <script>
 function setMode(cid, mode, btn) {
@@ -542,8 +416,7 @@ function setMode(cid, mode, btn) {
   grid.classList.remove('single-a', 'single-b');
   if (mode === 'b') grid.classList.add('single-b');
   if (mode === 'a') grid.classList.add('single-a');
-  const tabs = btn.parentElement.querySelectorAll('.vbtn');
-  tabs.forEach(t => t.classList.remove('active'));
+  btn.parentElement.querySelectorAll('.vbtn').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
 }
 </script>
